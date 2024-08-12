@@ -1,36 +1,36 @@
 
-MyObject {
-  my_number: int
-  my_text: string
-  my_object: obj
-  my_anything: any
-  my_array[]: MyObject
-  my_optional_number? int
-  my_nested_objects[]: {
-    field: int
-    (OtherObject)
+affect:data : {
+  registry: {
+    <AffectId...>: {
+      start? $command
+      tick? $command
+      end? $command
+      duplicate_protocol? $command
+    }
   }
-  my_partial_object: MyObject!
-  (ANY)
+  active_entities[]: {
+    UUID: UUID
+    effects[]: {
+        id: AffectId
+        data: any
+        task: later:TaskID
+      }
+    }
+  }
+  duplicate: {
+    old: {
+      data: any
+      duration: int
+    }
+    new: {
+      data: any
+      duration: int
+    }
+  }
+  current: {
+    data: any
+  }
+  
 }
-
-OtherObject {
-  other_field: string
-}
-
-#
-
-ItemSlot {
-  Slot: byte
-  (Item)
-}
-
-Item {
-  id: string
-  count: int
-  components: ItemComponents
-}
-
-ItemComponents {
-  ...
-}
+AffectId: string
+  - in format `<namespace>:<effect name>`
