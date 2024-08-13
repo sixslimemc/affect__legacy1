@@ -4,7 +4,7 @@
 #--------------------
 
 $data modify storage affect:var end.entity set from storage affect:data active_entities[{UUID:$(target)}]
-$data modify storage affect:data current.data set from storage affect:var end.entity.effects[{id:"$(id)"}].data
+data modify storage affect:data current.data set from storage later:data current.data.affect.data
 
 execute store result score *end.keep_target -affect run data get storage affect:var end.entity.effects[1]
 
