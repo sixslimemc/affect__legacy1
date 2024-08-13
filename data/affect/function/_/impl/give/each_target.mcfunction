@@ -3,11 +3,14 @@
 # @api
 #--------------------
 
+#as snowball
+kill @s
 data modify storage affect:var give.this_target set from storage affect:var give.targets[-1].UUID
+data modify entity @s Owner set from storage affect:var give.this_target
 
+scoreboard players set *give.trigger_start -affect 1
 $execute store result score *give.target_exists -affect run data modify storage affect:var give.current_effects set from storage affect:data active_entities[{UUID:$(UUID)}].effects
-execute if score *give.target_exists -affect matches 0 run function affect:_/impl/give/append_target
-execute if score *give.target_exists -affect matches 1.. run function affect:_/impl/give/modify_target with storage affect:in give
+execute on owner at @s run function affect:_/impl/give/each_target.1
 
 data remove storage affect:var give.targets[-1]
-execute if data storage affect:var give.targets[0] run function affect:_/impl/give/each_target with storage affect:var give.targets[-1]
+execute if data storage affect:var give.targets[0] summon snowball run function affect:_/impl/give/each_target with storage affect:var give.targets[-1]

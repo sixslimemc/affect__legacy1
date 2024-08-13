@@ -18,6 +18,8 @@ affect:data : {
     }
   }
   duplicate: {
+    id: AffectId
+    trigger_start: bool
     old: {
       data: any
       duration: int

@@ -3,6 +3,7 @@
 # ./each_target
 #--------------------
 
+
 data modify storage affect:var give.append.entry.UUID set from storage affect:var give.this_target
 data modify storage affect:var give.append.effect_entry.id set from storage affect:in give.id
 data modify storage affect:var give.append.effect_entry.data set from storage affect:in give.data

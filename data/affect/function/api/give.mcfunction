@@ -28,4 +28,4 @@ execute unless data storage affect:var give.effect run scoreboard players set *g
 execute if score *give.duration -affect matches ..0 run scoreboard players set *give.return --affect -2
 execute unless score *give.return --affect matches 1.. run return run function affect:_/impl/give/fail
 
-execute if data storage affect:var give.targets[0] run function affect:_/impl/give/each_target with storage affect:var give.targets[-1]
+execute if data storage affect:var give.targets[0] summon snowball run function affect:_/impl/give/each_target with storage affect:var give.targets[-1]
