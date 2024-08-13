@@ -40,5 +40,6 @@ data modify storage affect:var give.modify.with.this_target set from storage aff
 data modify storage affect:var give.modify.with.id set from storage affect:in give.id
 data modify storage affect:var give.modify.merge.ending_task set from storage affect:var give.make_task.result
 data modify storage affect:var give.modify.merge.data set from storage affect:data duplicate.new.data
+data modify storage affect:var give.modify.merge.tick.command set from storage affect:var give.effect.tick
 
 function affect:_/impl/give/modify_target.4 with storage affect:var give.modify.with

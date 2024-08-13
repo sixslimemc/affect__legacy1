@@ -6,6 +6,7 @@
 data modify storage affect:var give.append.entry.UUID set from storage affect:var give.this_target
 data modify storage affect:var give.append.effect_entry.id set from storage affect:in give.id
 data modify storage affect:var give.append.effect_entry.data set from storage affect:in give.data
+data modify storage affect:var give.append.effect_entry.tick.command set from storage affect:var give.effect.tick
 
 data modify storage affect:var give.make_task.ticks set from storage affect:in give.duration
 data modify storage affect:var give.make_task.data set from storage affect:in give.data
