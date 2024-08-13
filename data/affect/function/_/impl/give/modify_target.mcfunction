@@ -26,7 +26,7 @@ data modify storage affect:data duplicate.old.data set from storage affect:var g
 data modify storage affect:data duplicate.new.duration set from storage affect:in give.duration
 data modify storage affect:data duplicate.new.data set from storage affect:in give.data
 data modify storage affect:data duplicate.id set from storage affect:in give.id
-function affect:_/impl/give/modify_target.3 with storage affect:var give.effect
+execute if data storage affect:var give.effect.duplicate_protocol run function affect:_/impl/give/modify_target.3 with storage affect:var give.effect
 execute store result score *give.trigger_start -affect run data get storage affect:data duplicate.trigger_start
 
 # make new task
