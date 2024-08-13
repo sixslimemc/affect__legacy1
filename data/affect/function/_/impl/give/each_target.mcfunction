@@ -10,7 +10,8 @@ data modify entity @s Owner set from storage affect:var give.this_target
 
 scoreboard players set *give.trigger_start -affect 1
 $execute store result score *give.target_exists -affect run data modify storage affect:var give.current_effects set from storage affect:data active_entities[{UUID:$(UUID)}].effects
-execute on owner at @s run function affect:_/impl/give/each_target.1
+
+execute on origin at @s run function affect:_/impl/give/each_target.1
 
 data remove storage affect:var give.targets[-1]
 execute if data storage affect:var give.targets[0] summon snowball run function affect:_/impl/give/each_target with storage affect:var give.targets[-1]

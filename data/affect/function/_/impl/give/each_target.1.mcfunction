@@ -1,7 +1,5 @@
 #> affect:_/impl/give/each_target.1
 
-
-
 execute if score *give.target_exists -affect matches 0 run function affect:_/impl/give/append_target
 execute if score *give.target_exists -affect matches 1.. run function affect:_/impl/give/modify_target with storage affect:in give
 

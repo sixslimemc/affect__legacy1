@@ -5,6 +5,7 @@
 
 $data modify storage affect:var give.modify.effect set from storage affect:var give.current_effects[{id:"$(id)"}]
 
+
 # get task
 function affect:_/impl/give/modify_target.1 with storage affect:var give.modify.effect
 
@@ -35,7 +36,14 @@ data modify storage affect:var give.make_task.data set from storage affect:data 
 function affect:_/impl/give/make_task
 
 # modify data
+data modify storage affect:var give.modify.with.this_target set from storage affect:var give.this_target
 data modify storage affect:var give.modify.with.id set from storage affect:in give.id
-data modify storage affect:var give.modify.merge.task_id set from storage affect:var give.make_task.result
+data modify storage affect:var give.modify.merge.ending_task set from storage affect:var give.make_task.result
 data modify storage affect:var give.modify.merge.data set from storage affect:data duplicate.new.data
+
+#>---- D E B U G --------
+data modify storage loggr:in log.message set from storage affect:var give.modify.with
+function loggr:api/log
+#>--------------
+
 function affect:_/impl/give/modify_target.4 with storage affect:var give.modify.with

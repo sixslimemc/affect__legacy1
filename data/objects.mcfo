@@ -13,7 +13,7 @@ affect:data : {
     effects[]: {
         id: AffectId
         data: any
-        task: later:TaskID
+        ending_task: later:TaskID
       }
     }
   }
