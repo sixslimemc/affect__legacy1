@@ -41,9 +41,4 @@ data modify storage affect:var give.modify.with.id set from storage affect:in gi
 data modify storage affect:var give.modify.merge.ending_task set from storage affect:var give.make_task.result
 data modify storage affect:var give.modify.merge.data set from storage affect:data duplicate.new.data
 
-#>---- D E B U G --------
-data modify storage loggr:in log.message set from storage affect:var give.modify.with
-function loggr:api/log
-#>--------------
-
 function affect:_/impl/give/modify_target.4 with storage affect:var give.modify.with
