@@ -10,6 +10,7 @@ affect:data : {
   }
   active_entities[]: {
     UUID: UUID
+    guuid: guuid
     effects[]: {
         id: AffectId
         data: any
