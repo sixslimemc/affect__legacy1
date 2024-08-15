@@ -5,7 +5,7 @@
 # => selector : $selector = "@s"
 # => data : any = {}
 #--------------------
-# -> result : any
+# ...
 #--------------------
 #> applies the affect with <id> with <data> for <duration> ticks.
 #--------------------
