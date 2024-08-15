@@ -4,4 +4,3 @@
 #--------------------
 
 function affect:_/on_join.1 with entity @s
-say hi
