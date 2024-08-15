@@ -3,4 +3,4 @@
 # ./proxy
 #--------------------
 
-$data remove storage affect:data active_entities[{UUID:$(target)}]
+$data remove storage affect:data entities.active[{UUID:$(target)}]

@@ -21,4 +21,4 @@ data modify storage affect:var give.append.effect_entry.ending_task set from sto
 data modify storage affect:var give.append.entry.effects append from storage affect:var give.append.effect_entry
 
 ## prepended for tick performance
-data modify storage affect:data active_entities prepend from storage affect:var give.append.entry
+data modify storage affect:data entities.active prepend from storage affect:var give.append.entry

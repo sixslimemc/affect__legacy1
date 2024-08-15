@@ -8,20 +8,6 @@ affect:data : {
       duplicate_protocol? $command
     }
   }
-  active_entities[]: {
-    UUID: UUID
-    guuid: guuid
-    effects[]: {
-        id: AffectId
-        data: any
-        ending_task: later:TaskID
-        tick? {
-          command: $command
-          ticking: bool
-        }
-      }
-    }
-  }
   duplicate: {
     id: AffectId
     trigger_start: bool
@@ -37,7 +23,24 @@ affect:data : {
   current: {
     data: any
   }
-  
+  entities: {
+    active[]: EntityEntry
+    inactive[]: EntityEntry
+  }
+}
+
+EntityEntry: {
+  UUID: UUID
+  guuid: guuid
+  effects[]: {
+    id: AffectId
+    data: any
+    ending_task: later:TaskID
+    tick? {
+      command: $command
+      ticking: bool
+    }
+  }
 }
 AffectId: string
   - in format `<namespace>:<effect name>`

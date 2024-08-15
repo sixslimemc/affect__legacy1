@@ -1,5 +1,7 @@
 # Dependencies
 * six
+* onjoin
+* onleave
 * later
 * later.prt
 

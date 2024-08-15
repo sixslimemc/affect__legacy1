@@ -9,7 +9,7 @@
 # target
 # id
 
-$data modify storage affect:var end.entity set from storage affect:data active_entities[{UUID:$(target)}]
+$data modify storage affect:var end.entity set from storage affect:data entities.active[{UUID:$(target)}]
 $data modify storage affect:var end.effect_entry set from storage affect:var end.entity.effects[{id:"$(id)"}]
 execute unless data storage affect:var end.effect_entry run return fail
 
@@ -18,7 +18,7 @@ execute if score *end.trigger.cancel_task -affect matches 1.. run function later
 
 execute store result score *end.keep_target -affect if data storage affect:var end.entity.effects[1]
 
-$data remove storage affect:data active_entities[{UUID:$(target)}].effects[{id:"$(id)"}]
+$data remove storage affect:data entities.active[{UUID:$(target)}].effects[{id:"$(id)"}]
 execute if score *end.keep_target -affect matches 0 run function affect:_/end/remove_target with storage affect:var end.trigger
 
 $data modify storage affect:var end.with.end_command set from storage affect:data registry."$(id)".end

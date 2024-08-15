@@ -1,5 +1,7 @@
 {
     "values": [
+        "#onjoin:load",
+        "#onleave:load",
         "#six:load",
         "#later:load",
         "#later.prt:load",
