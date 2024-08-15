@@ -6,9 +6,6 @@
 # load
 scoreboard players set *affect load-status 1
 
-# settings
-execute unless data storage affect:settings {PERSIST:true} run function affect:settings
-
 #declare storage affect:var
 #declare storage affect:in
 #declare storage affect:out

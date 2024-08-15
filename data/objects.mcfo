@@ -17,6 +17,7 @@ affect:data : {
         ending_task: later:TaskID
         tick? {
           command: $command
+          ticking: bool
         }
       }
     }
