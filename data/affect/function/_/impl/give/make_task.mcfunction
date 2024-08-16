@@ -1,6 +1,7 @@
 #> affect:_/impl/give/make_task
 #--------------------
 # ./append_target
+# ./append_effect
 #--------------------
 
 data merge storage later:in {delay:{selector:"@s"}}
@@ -8,7 +9,6 @@ data modify storage later:in delay.ticks set from storage affect:var give.make_t
 data modify storage later:in delay.command set value "function affect:_/end/proxy"
 data modify storage later:in delay.data.affect._.end_command set from storage affect:var give.effect.end
 data modify storage later:in delay.data.affect._.target set from storage affect:var give.this_target
-data modify storage later:in delay.data.affect._.data set from storage affect:var give.make_task.data
 data modify storage later:in delay.data.affect._.id set from storage affect:in give.id
 
 function later:api/delay

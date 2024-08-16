@@ -13,7 +13,6 @@ data modify storage affect:var give.append.effect_entry.data set from storage af
 execute if data storage affect:var give.effect.tick run function affect:_/impl/give/append_tick_entry
 
 data modify storage affect:var give.make_task.ticks set from storage affect:in give.duration
-data modify storage affect:var give.make_task.data set from storage affect:in give.data
 function affect:_/impl/give/make_task
 
 data modify storage affect:var give.append.effect_entry.ending_task set from storage affect:var give.make_task.result
