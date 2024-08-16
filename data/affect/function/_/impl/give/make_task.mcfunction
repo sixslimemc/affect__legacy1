@@ -4,9 +4,8 @@
 # ./append_effect
 #--------------------
 
-data merge storage later:in {delay:{selector:"@s"}}
+data merge storage later:in {delay:{selector:"@s", command:"function affect:_/end/proxy", failsafe:"function affect:_/end/failsafe with storage later:data current"}}
 data modify storage later:in delay.ticks set from storage affect:var give.make_task.ticks
-data modify storage later:in delay.command set value "function affect:_/end/proxy"
 data modify storage later:in delay.data.affect._.end_command set from storage affect:var give.effect.end
 data modify storage later:in delay.data.affect._.target set from storage affect:var give.this_target
 data modify storage later:in delay.data.affect._.id set from storage affect:in give.id
