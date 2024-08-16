@@ -20,7 +20,7 @@ execute store result score *give.modify.old_duration -affect run data get storag
 scoreboard players operation *give.modify.old_duration -affect -= *give.modify.time -affect
 
 execute store result storage affect:data duplicate.old.duration int 1 run scoreboard players get *give.modify.old_duration -affect
-data modify storage affect:data duplicate.old.data set from storage affect:var give.modify.task.data.affect._.data
+data modify storage affect:data duplicate.old.data set from storage affect:var give.modify.effect.data
 data modify storage affect:data duplicate.new.duration set from storage affect:in give.duration
 data modify storage affect:data duplicate.new.data set from storage affect:in give.data
 data modify storage affect:data duplicate.id set from storage affect:in give.id
