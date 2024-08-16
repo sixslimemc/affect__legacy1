@@ -41,5 +41,6 @@ scoreboard players reset *give.duration -affect
 scoreboard players reset *give.modify.old_duration -affect
 scoreboard players reset *give.modify.time -affect
 scoreboard players reset *give.trigger_start -affect
+scoreboard players reset *give.trigger_end -affect
 
 return run scoreboard players get *give.return --affect

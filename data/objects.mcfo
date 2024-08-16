@@ -10,7 +10,10 @@ affect:data : {
   }
   duplicate: {
     id: AffectId
-    trigger_start: bool
+    trigger: {
+      start: bool
+      end: bool
+    }
     old: {
       data: any
       duration: int

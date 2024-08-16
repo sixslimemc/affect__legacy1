@@ -14,7 +14,7 @@ data modify storage later:in cancel.task_id set from storage affect:var give.mod
 function later:api/cancel
 
 # duplicate protocol
-data merge storage affect:data {duplicate:{trigger_start:true}}
+data merge storage affect:data {duplicate:{old:{trigger_end:true}, new:{trigger_start:true}}}
 execute store result score *give.modify.time -affect run time query gametime
 execute store result score *give.modify.old_duration -affect run data get storage affect:var give.modify.task.time
 scoreboard players operation *give.modify.old_duration -affect -= *give.modify.time -affect
@@ -25,7 +25,12 @@ data modify storage affect:data duplicate.new.duration set from storage affect:i
 data modify storage affect:data duplicate.new.data set from storage affect:in give.data
 data modify storage affect:data duplicate.id set from storage affect:in give.id
 execute if data storage affect:var give.effect.duplicate_protocol run function affect:_/impl/give/duplicate.2 with storage affect:var give.effect
-execute store result score *give.trigger_start -affect run data get storage affect:data duplicate.trigger_start
+
+execute store result score *give.trigger_start -affect run data get storage affect:data duplicate.new.trigger_start
+execute if score *give.trigger_start -affect matches 1.. run data modify storage affect:var give.trigger_start.data set from storage affect:data duplicate.new.data
+
+execute store result score *give.trigger_end -affect run data get storage affect:data duplicate.old.trigger_end
+execute if score *give.trigger_end -affect matches 1.. run data modify storage affect:var give.trigger_end.data set from storage affect:data duplicate.old.data
 
 # make new task
 data modify storage affect:var give.make_task.ticks set from storage affect:data duplicate.new.duration
