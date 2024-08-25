@@ -4,5 +4,5 @@
 # ./append_target
 #--------------------
 
-data merge storage affect:var {give:{append:{effect_entry:{tick:{ticking:true}}}}}
-data modify storage affect:var give.append.effect_entry.tick.command set from storage affect:var give.effect.tick
+data modify storage affect:var give[-1].append.effect_entry.tick.ticking set value true
+data modify storage affect:var give[-1].append.effect_entry.tick.command set from storage affect:var give[-1].effect.tick

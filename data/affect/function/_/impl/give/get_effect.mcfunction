@@ -3,4 +3,4 @@
 # @api
 #--------------------
 
-$data modify storage affect:var give.effect set from storage affect:data registry."$(id)"
+$data modify storage affect:var give[-1].effect set from storage affect:data registry."$(id)"

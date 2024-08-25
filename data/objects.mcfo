@@ -8,7 +8,10 @@ affect:data : {
       duplicate_protocol? $command
     }
   }
-  duplicate: {
+  this[]: {
+    data: any
+  }
+  duplicate[]: {
     id: AffectId
     trigger: {
       start: bool
@@ -22,9 +25,6 @@ affect:data : {
       data: any
       duration: int
     }
-  }
-  current: {
-    data: any
   }
   entities: {
     active[]: EntityEntry
