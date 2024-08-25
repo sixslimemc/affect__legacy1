@@ -23,8 +23,11 @@ execute if score *end.keep_target -affect matches 0 run function affect:_/end/re
 
 $data modify storage affect:var end.with.end_command set from storage affect:data registry."$(id)".end
 data modify storage affect:var end.with.guuid set from storage affect:var end.entity.guuid
-data modify storage affect:data current.data set from storage affect:var end.effect_entry.data
+
+data modify storage affect:data this append value {}
+data modify storage affect:data this[-1].data set from storage affect:var end.effect_entry.data
 function affect:_/end/trigger.1 with storage affect:var end.with
+data remove storage affect:data this[-1]
 
 data remove storage affect:var end
 scoreboard players reset *end.keep_target -affect

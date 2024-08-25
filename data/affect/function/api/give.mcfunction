@@ -16,6 +16,8 @@
 # -2 - <duration> is less than 1
 #--------------------
 
+# this scope safety bs is kinda bs on god ! !
+
 # defaults
 execute unless data storage affect:in give.selector run data modify storage affect:in give.selector set value "@s"
 execute unless data storage affect:in give.data run data modify storage affect:in give.data set value {}
@@ -39,13 +41,13 @@ execute unless score *give.return --affect matches 1.. run return run function a
 
 execute store result storage affect:var give[-1].return int 1 run scoreboard players get *give.return --affect
 
+data remove storage affect:in give
 # POTENTIAL OUT OF SCOPE EXECUTION
 execute if data storage affect:var give[-1].targets[0] summon snowball run function affect:_/impl/give/each_target with storage affect:var give[-1].targets[-1]
 
 execute store result score *give.return --affect run data get storage affect:var give[-1].return
 
-data remove storage affect:in give
-data remove storage affect:var give_append
+data remove storage affect:var give_task
 data remove storage affect:var give[-1]
 execute unless data storage affect:var give[0] run data remove storage affect:var give
 scoreboard players reset *give.duration -affect
