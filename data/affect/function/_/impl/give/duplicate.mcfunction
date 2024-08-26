@@ -33,11 +33,6 @@ data modify storage affect:var give[-1].do_trigger.end set from storage affect:d
 execute if data storage affect:var give[-1].do_trigger{end:true} run data modify storage affect:var give[-1].trigger_end.data set from storage affect:data duplicate[-1].old.data
 
 # make new task
-#>---- D E B U G --------
-data modify storage loggr:in log.message set from storage affect:data duplicate
-function loggr:api/log
-#>--------------
-
 data modify storage affect:var give_task.ticks set from storage affect:data duplicate[-1].new.duration
 function affect:_/impl/give/make_task
 
