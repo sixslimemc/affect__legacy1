@@ -4,7 +4,7 @@
 #--------------------
 
 data modify storage affect:var give[-1].append.entry.UUID set from storage affect:var give[-1].this_target
-data modify storage six:in guuid.UUID set from storage affect:var give[-1].this_target
+data modify storage six:in guuid.uuid set from storage affect:var give[-1].this_target
 function six:api/uuid/guuid
 data modify storage affect:var give[-1].append.entry.guuid set from storage six:out guuid.result
 data modify storage affect:var give[-1].append.effect_entry.id set from storage affect:var give[-1].in.id
