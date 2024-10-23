@@ -122,9 +122,11 @@ This function will return the amount of c-effect instances removed.
 
 ## Examples
 
-#### Create a simple c-effect:
+### Create a simple effect:
+
+Defines `mypack:on_fire`, which gives 20% movement speed and emits flame particles while active:
 ```mcfunction
-# defines "mypack:on_fire", which gives 20% movement speed and emits flame particles while active.
+#(in load function)
 data modify storage affect:data registry."mypack:on_fire".start set value "attribute @s movement_speed modifier add mypack:effect/on_fire 0.2 add_multiplied_total"
 data modify storage affect:data registry."mypack:on_fire".tick set value "particle flame ~ ~1 ~ 0.2 0.2 0.2 0.1 2"
 data modify storage affect:data registry."mypack:on_fire".end set value "attribute @s movement_speed modifier remove mypack:effect/on_fire"
@@ -132,14 +134,18 @@ data modify storage affect:data registry."mypack:on_fire".end set value "attribu
 
 This effect can be applied like so:
 ```mcfunction
-# gives "mypack:on_fire" to the executor of this function for 4 seconds.
+# gives "mypack:on_fire" to the executer of this function for 4 seconds.
 data merge storage affect:in {give:{id:"mypack:on_fire", duration:80}}
 function affect:api/give
 ```
 
-#### Create a c-effect with levels/potency:
+### Create an effect with levels/potency:
+
+Defines `mypack:heavy`, which increases knockback resistance by 10% and decreases movement speed by 10% for each `level` (specified by attached data):
+
+Definition header:
 ```mcfunction
-# defines "mypack:heavy"
+#(in load function)
 data modify storage affect:data registry."mypack:heavy".start set value "function mypack:_/heavy/start"
 data modify storage affect:data registry."mypack:heavy".end set value "function mypack:_/heavy/end"
 ```
@@ -165,19 +171,16 @@ attribute @s knockback_resistance modifier remove mypack:effect/heavy
 attribute @s movement_speed modifier remove mypack:effect/heavy
 ```
 
-This defines `mypack:heavy`, which increases knockback resistance by 10% and decreases movement speed by 10% for each `level` (specified by attached data).
-
 Applying this effect:
 ```mcfunction
-# gives "mypack:heavy" with level:3 to the executor of this function for 30 seconds.
+# gives "mypack:heavy" with level:3 to the executer of this function for 30 seconds.
 data merge storage affect:in {give:{id:"mypack:heavy", duration:6000, data:{level:3}}}
 function affect:api/give
 ```
 
-#### Duplicate protocol that adds/stacks duration:
+### Duplicate protocol that adds/stacks duration:
+This block would be in a function called by a c-effect's 'duplicate_protocol' component.
 ```mcfunction
-#>> This block would be in a function called by a c-effect's 'duplicate_protocol' component.
-
 # get and add the durations of the merging instances (provided by affect:data -> this[-1].duplicate)
 execute store result score *old_duration -mypack run data get storage affect:data this[-1].duplicate.old.duration
 execute store result score *new_duration -mypack run data get storage affect:data this[-1].duplicate.new.duration
