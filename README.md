@@ -179,7 +179,7 @@ function affect:api/give
 ```
 
 ### Duplicate protocol that adds/stacks duration:
-In the function executed by the `duplicate_protocol` component:
+The function executed by the `duplicate_protocol` component:
 ```mcfunction
 # get and add the durations of the merging instances (provided by affect:data -> this[-1].duplicate)
 execute store result score *old_duration -mypack run data get storage affect:data this[-1].duplicate.old.duration
