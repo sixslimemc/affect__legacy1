@@ -195,7 +195,7 @@ scoreboard players operation *new_duration -mypack += *old_duration -mypack
 # store the added duration back into affect:data -> this[-1].duplicate.new
 execute store result storage affect:data this[-1].duplicate.new.duration int 1 run scoreboard players get *new_duration -mypack
 
-# It might make more sense to not trigger the 'end' or 'start' of the effect, since it's just a "continuance".
+# Do not trigger the 'end' or 'start' of the effect, since it's just a "continuation".
 data modify storage affect:data this[-1].duplicate.trigger set value {start:false, end:false}
 ```
 
