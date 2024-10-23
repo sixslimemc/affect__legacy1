@@ -179,7 +179,13 @@ function affect:api/give
 ```
 
 ### Duplicate protocol that adds/stacks duration:
-The function executed by the `duplicate_protocol` component:
+Definition of `mypack:adding`:
+```mcfunction
+data modify storage affect:data registry."mypack:adding".start set value 'tellraw @a "start!"'
+data modify storage affect:data registry."mypack:adding".end set value 'tellraw @a "end!"'
+data modify storage affect:data registry."mypack:adding".duplicate_protocol set value "function mypack:_/adding/protocol"
+```
+`mypack:_/adding/protocol`:
 ```mcfunction
 # get and add the durations of the merging instances (provided by affect:data -> this[-1].duplicate)
 execute store result score *old_duration -mypack run data get storage affect:data this[-1].duplicate.old.duration
@@ -191,6 +197,25 @@ execute store result storage affect:data this[-1].duplicate.new.duration int 1 r
 
 # It might make more sense to not trigger the 'end' or 'start' of the effect, since it's just a "continuance".
 data modify storage affect:data this[-1].duplicate.trigger set value {start:false, end:false}
+```
+
+Mock demonstration of applying this effect multiple times:
+```mcfunction
+data merge storage affect:in {give:{id:"mypack:adding", duration:100}}
+function affect:api/give
+# "start!" in chat.
+# duration is 100
+
+#<50 ticks pass...>
+# duration is now 50.
+
+data merge storage affect:in {give:{id:"mypack:adding", duration:100}}
+function affect:api/give
+# no message in chat.
+# duration is now 150.
+
+#<250 ticks pass...>
+# "end!" in chat.
 ```
 ___
 
