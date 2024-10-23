@@ -214,7 +214,7 @@ function affect:api/give
 # no message in chat.
 # duration is now 150.
 
-#<250 ticks pass...>
+#<150 ticks pass...>
 # "end!" in chat.
 ```
 ___
