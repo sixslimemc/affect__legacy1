@@ -21,6 +21,8 @@ C-effect definitions have the following components:
 
 In addition to having a duration, c-effect instances can have arbitrary data attached, which is accessible to all of a c-effects components.
 # Usage
+
+#### Preface:
 For brevity, NBT storage locations will be referred to like so: `<storage location> -> <nbt path>`. \
 *Such that `/data modify storage <storage location> <nbt location>...` is valid.* 
 
