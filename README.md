@@ -39,9 +39,11 @@ If a c-effect is applied to an entity that already has an instance of the same c
 
 ### Defining Effects
 #### Effect Identifier:
-A c-effect must have an EffectIdentifier, which effectively acts as it's name. \
+A c-effect must have an EffectIdentifier, which effectively acts as it's name.
+
 An EffectIdentifier must be in a format similar to NBT storage locations: **`<namespace>:<arbitrary path>`**. \
-*(ex: `mypack:some_category/my_effect`.)* \
+*(ex: `mypack:some_category/my_effect`.)*
+
 By convention, `<namespace>` must be the namespace that the c-effect is being defined in.
 
 #### Effect Definition:
