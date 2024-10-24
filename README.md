@@ -1,6 +1,6 @@
 
 # Affect | affect
-> Makes implementing effect-like behavior dead-simple.
+> Library that makes implementing effect-like behavior dead-simple.
 
 ## Dependencies
 - [load](https://github.com/sixslime/load)
