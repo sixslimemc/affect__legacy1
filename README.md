@@ -39,11 +39,9 @@ If a c-effect is applied to an entity that already has an instance of the same c
 
 ### Defining Effects
 #### Effect Identifier:
-A c-effect must have an EffectIdentifier, which effectively acts as it's name.
-
+A c-effect must have an EffectIdentifier, which effectively acts as it's name. \
 An EffectIdentifier must be in a format similar to NBT storage locations: **`<namespace>:<arbitrary path>`**. \
-*(ex: `mypack:some_category/my_effect`.)*
-
+*(ex: `mypack:some_category/my_effect`.)* \
 By convention, `<namespace>` must be the namespace that the c-effect is being defined in.
 
 #### Effect Definition:
@@ -67,8 +65,7 @@ As stated above, `start`, `tick`, and `end` are simply commands that will run du
 
 ALL components/commands of a c-effect will run AS and AT the entity they effect.
 
-If a c-effect instance is provided with data, `affect:data -> this[-1].data` will hold this data when the `start`, `tick`, and `end` commands are executed.
-
+If a c-effect instance is provided with data, `affect:data -> this[-1].data` will hold this data when the `start`, `tick`, and `end` commands are executed. \
 Once a c-effect instance is applied with data, this data cannot change; another instance must be applied in order for it to change. \
 *(Changes made to `affect:data -> this[-1].data` are ignored.)*
 
@@ -107,7 +104,7 @@ To give entities a c-effect, use `affect:api/give` with the following inputs und
 
 This gives entities captured by **\<selector\>** the c-effect **\<id\>** for **\<duration\>** ticks, with **\<data\>** attached.
 
-This function has the following return codes:
+`affect:api/give` has the following return codes:
 - `0..` : How many entities matched **\<selector\>** (success).
 - `-1` : **\<id\>** does not exist within `affect:data -> registry`.
 - `-2` : **\<duration\>** is less than 1.
@@ -121,7 +118,7 @@ To remove a c-effect from entities, use `affect:api/remove` with the following i
 
 This removes any instances of the **\<id\>** c-effect from entities matching **\<selector\>**.
 
-This function will return the amount of c-effect instances removed.
+`affect:api/remove` will return the amount of c-effect instances removed.
 
 ## Examples
 
