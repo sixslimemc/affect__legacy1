@@ -22,12 +22,11 @@ C-effect definitions have the following components:
 In addition to having a duration, c-effect instances can have arbitrary data attached, which is accessible to all of a c-effects components.
 # Usage
 
-#### Preface:
 For brevity, NBT storage locations will be referred to like so: `<storage location> -> <nbt path>`. \
 *Such that `/data modify storage <storage location> <nbt location>...` is valid.* 
 
 Likewise, custom effects created with Affect will be referred to as 'c-effects'.
-### Conceptual
+## Conceptual
 A c-effect has one **definition** that defines it's behavior (the four components described above.)
 
 Once a c-effect is defined, it can be applied to an entity, creating an **instance** of that c-effect. \
@@ -37,14 +36,14 @@ An entity **cannot** have multiple instances of the same c-effect.
 
 If a c-effect is applied to an entity that already has an instance of the same c-effect active, that c-effect's `duplicate_protocol` is executed, which handles how the two instances are merged.
 
-### Defining Effects
-#### Effect Identifier:
+## Defining Effects
+### Effect Identifier
 A c-effect must have an EffectIdentifier, which effectively acts as it's name. \
 An EffectIdentifier must be in a format similar to NBT storage locations: **`<namespace>:<arbitrary path>`**. \
 *(ex: `mypack:some_category/my_effect`.)* \
 By convention, `<namespace>` must be the namespace that the c-effect is being defined in.
 
-#### Effect Definition:
+### Effect Definition
 To define a c-effect, add an object under `affect:data -> registry.<EffectIdentifier>` with the following keys:
 | NBT path | Type | Description |
 |--|--|--|
@@ -59,7 +58,7 @@ Any key may be omitted if no command is desired for the given key. \
 It is standard to put c-effect definitions in or in a sub-function of a datapack's load function. \
 It is recommended that datapacks remove their c-effect definitions in an "uninstall" function.
 
-#### Effect Implementation:
+### Effect Implementation
 As stated above, `start`, `tick`, and `end` are simply commands that will run during stages of a c-effect instance's lifetime. \
 *For non-trivial uses, these will probably contain a `function` command.*
 
@@ -69,7 +68,7 @@ If a c-effect instance is provided with data, `affect:data -> this[-1].data` wil
 Once a c-effect instance is applied with data, this data cannot change; another instance must be applied in order for it to change. \
 *(Changes made to `affect:data -> this[-1].data` are ignored.)*
 
-#### Duplicate Protocol:
+### Duplicate Protocol
 The `duplicate_protocol` is a command that is executed when a c-effect is applied to an entity that already has an instance of the same c-effect, and handles how the two instances are merged.
 
 Upon `duplicate_protocol` execution, `affect:data -> duplicate[-1]` will hold the following keys:
@@ -88,12 +87,12 @@ As stated above, `affect:data -> duplicate[-1].trigger` dictates whether or not 
 
 Notice that if `duplicate_protocol` does nothing, the behavior is equivalent to removing the old instance then applying the new one.
 
-### Giving/Removing Effects
+## Giving/Removing Effects
 It is important to note that `affect:api/...` functions reset their input values after use. \
 This has the side effect of making `execute as <multi-entity selector> run function affect:api/...` ineffective, as the inputs are reset after executing as the first entity. \
 *(Hence why `affect:api/...` functions have the 'selector' input.)*
 
-#### Giving Effects:
+### Giving Effects
 To give entities a c-effect, use `affect:api/give` with the following inputs under `affect:in -> give`:
 | NBT path | Type | Default Value |
 |--|--|--|
@@ -109,7 +108,7 @@ This gives entities captured by **\<selector\>** the c-effect **\<id\>** for **\
 - `-1` : **\<id\>** does not exist within `affect:data -> registry`.
 - `-2` : **\<duration\>** is less than 1.
 
-#### Removing Effects:
+### Removing Effects
 To remove a c-effect from entities, use `affect:api/remove` with the following inputs under `affect:in -> remove`:
 | NBT path | Type | Default Value |
 |--|--|--|
@@ -120,10 +119,9 @@ This removes any instances of the **\<id\>** c-effect from entities matching **\
 
 `affect:api/remove` will return the amount of c-effect instances removed.
 
-## Examples
+# Examples
 
 ### A Simple Effect
-
 Defines `mypack:on_fire`, which gives 20% movement speed and emits flame particles while active:
 ```mcfunction
 #(in load function)
@@ -140,7 +138,6 @@ function affect:api/give
 ```
 
 ### Effect with Levels/Potency
-
 Defines `mypack:heavy`, which increases knockback resistance by 10% and decreases movement speed by 10% for each `level` (specified by attached data):
 ```mcfunction
 #(in load function)
