@@ -122,7 +122,7 @@ This removes any instances of the **\<id\>** c-effect from entities matching **\
 
 ## Examples
 
-### Create a simple effect:
+### A Simple Effect
 
 Defines `mypack:on_fire`, which gives 20% movement speed and emits flame particles while active:
 ```mcfunction
@@ -134,16 +134,14 @@ data modify storage affect:data registry."mypack:on_fire".end set value "attribu
 
 This effect can be applied like so:
 ```mcfunction
-# gives "mypack:on_fire" to the executer of this function for 4 seconds.
+# gives "mypack:on_fire" to the executer of this function for 4 seconds:
 data merge storage affect:in {give:{id:"mypack:on_fire", duration:80}}
 function affect:api/give
 ```
 
-### Create an effect with levels/potency:
+### Effect with Levels/Potency
 
 Defines `mypack:heavy`, which increases knockback resistance by 10% and decreases movement speed by 10% for each `level` (specified by attached data):
-
-Definition header:
 ```mcfunction
 #(in load function)
 data modify storage affect:data registry."mypack:heavy".start set value "function mypack:_/heavy/start"
@@ -152,10 +150,10 @@ data modify storage affect:data registry."mypack:heavy".end set value "function 
 
 `mypack:_/heavy/start`:
 ```mcfunction
-# multiply the level of the effect by 0.1 and store it in 'heavy.percent'
+# multiply the level of the effect by 0.1 and store it in 'heavy.percent':
 execute store result storage mypack:var heavy.percent float 0.1 run data get storage affect:data this[-1].data.level
 
-# run child function so 'heavy.percent' is accessible via macro
+# run child function so 'heavy.percent' is accessible via macro:
 function mypack:_heavy/start.1 with storage mypack:var heavy
 ```
 
@@ -173,13 +171,13 @@ attribute @s movement_speed modifier remove mypack:effect/heavy
 
 Applying this effect:
 ```mcfunction
-# gives "mypack:heavy" with level:3 to the executer of this function for 30 seconds.
+# gives "mypack:heavy" with level:3 to the executer of this function for 30 seconds:
 data merge storage affect:in {give:{id:"mypack:heavy", duration:6000, data:{level:3}}}
 function affect:api/give
 ```
 
-### Duplicate protocol that adds/stacks duration:
-Definition of `mypack:adding`:
+### Custom Duplicate Protocol Behavior
+Defines `mypack:adding`, which stacks it's duration when applied multiple times:
 ```mcfunction
 data modify storage affect:data registry."mypack:adding".start set value 'tellraw @a "start!"'
 data modify storage affect:data registry."mypack:adding".end set value 'tellraw @a "end!"'
@@ -187,15 +185,15 @@ data modify storage affect:data registry."mypack:adding".duplicate_protocol set 
 ```
 `mypack:_/adding/protocol`:
 ```mcfunction
-# get and add the durations of the merging instances (provided by affect:data -> this[-1].duplicate)
+# get and add the durations of the merging instances (provided by affect:data -> this[-1].duplicate):
 execute store result score *old_duration -mypack run data get storage affect:data this[-1].duplicate.old.duration
 execute store result score *new_duration -mypack run data get storage affect:data this[-1].duplicate.new.duration
 scoreboard players operation *new_duration -mypack += *old_duration -mypack
 
-# store the added duration back into affect:data -> this[-1].duplicate.new
+# store the added duration back into affect:data -> this[-1].duplicate.new:
 execute store result storage affect:data this[-1].duplicate.new.duration int 1 run scoreboard players get *new_duration -mypack
 
-# Do not trigger the 'end' or 'start' of the effect, since it's just a "continuation".
+# do not trigger the 'end' or 'start' of the effect:
 data modify storage affect:data this[-1].duplicate.trigger set value {start:false, end:false}
 ```
 
