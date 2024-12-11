@@ -11,7 +11,7 @@
 - [later.prt](https://github.com/sixslime/later.prt)
 
 # Overview
-Affect provides a framework for defining command-driven custom entity effects (referred to as 'c-effects' for brevity).
+Affect provides a framework for defining command-defined custom entity effects (referred to as 'c-effects' for brevity).
 
 C-effect definitions have the following components:
 - `start`: Command that runs when c-effect is applied, before the first tick of being active.
