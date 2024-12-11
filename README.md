@@ -22,12 +22,12 @@ C-effect definitions have the following components:
 In addition to having a duration, c-effect instances can have arbitrary data attached, which is accessible to all of a c-effects components.
 # Usage
 
-For brevity, NBT storage locations will be referred to like so: `<storage location> -> <nbt path>`. \
+NBT storage locations will be referred to like so: `<storage location> -> <nbt path>`. \
 *Such that `/data modify storage <storage location> <nbt location>...` is valid.* 
 
 Likewise, custom effects created with Affect will be referred to as 'c-effects'.
 ## Conceptual
-A c-effect has one **definition** that defines it's behavior (the four components described above.)
+A c-effect has one **definition** that defines it's behavior (the four components described in the [Overview](https://github.com/sixslime/affect/edit/main/README.md#overview).)
 
 Once a c-effect is defined, it can be applied to an entity, creating an **instance** of that c-effect. \
 An instance of a c-effect has a duration, and can optionally have attached data, accessible by it's components.
@@ -39,9 +39,9 @@ If a c-effect is applied to an entity that already has an instance of the same c
 ## Defining Effects
 ### Effect Identifier
 A c-effect must have an EffectIdentifier, which effectively acts as it's name. \
-An EffectIdentifier must be in a format similar to NBT storage locations: **`<namespace>:<arbitrary path>`**. \
+An EffectIdentifier must be in the following format: **`<namespace>:<arbitrary path>`**. \
 *(ex: `mypack:some_category/my_effect`.)* \
-By convention, `<namespace>` must be the namespace that the c-effect is being defined in.
+By convention, `<namespace>` is the namespace that the c-effect is defined in.
 
 ### Effect Definition
 To define a c-effect, add an object under `affect:data -> registry.<EffectIdentifier>` with the following keys:
@@ -88,10 +88,6 @@ As stated above, `affect:data -> duplicate[-1].trigger` dictates whether or not 
 Notice that if `duplicate_protocol` does nothing, the behavior is equivalent to removing the old instance then applying the new one.
 
 ## Giving/Removing Effects
-It is important to note that `affect:api/...` functions reset their input values after use. \
-This has the side effect of making `execute as <multi-entity selector> run function affect:api/...` ineffective, as the inputs are reset after executing as the first entity. \
-*(Hence why `affect:api/...` functions have the 'selector' input.)*
-
 ### Giving Effects
 To give entities a c-effect, use `affect:api/give` with the following inputs under `affect:in -> give`:
 | NBT path | Type | Default Value |
@@ -119,6 +115,10 @@ This removes any instances of the **\<id\>** c-effect from entities matching **\
 
 `affect:api/remove` will return the amount of c-effect instances removed.
 
+#### Note:
+It is important to note that `affect:api/...` functions reset their input values after use. \
+This has the side effect of making `execute as <multi-entity selector> run function affect:api/...` ineffective, as the inputs are reset after executing as the first entity. \
+*(Hence why `affect:api/...` functions have the 'selector' input.)*
 # Examples
 
 ### A Simple Effect
