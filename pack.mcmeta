@@ -1,6 +1,6 @@
 {
 	"pack": {
-		"pack_format": 55,
-		"description": "pack description. -SixSlime"
+		"pack_format": 61,
+		"description": "Library that makes implementing effect-like behavior dead-simple. (Library)"
 	}
 }

@@ -6,17 +6,9 @@
 # load
 scoreboard players set *affect load-status 1
 
-#declare storage affect:var
-#declare storage affect:in
-#declare storage affect:out
-#declare storage affect:data
-#declare storage affect:hook
-#declare storage affect:implement
-
 # scoreboards
 scoreboard objectives add -affect dummy
 scoreboard objectives add --affect dummy
-#scoreboard objectives add affect-scoreboard dummy
 
 # tick
 schedule clear affect:_/tick
