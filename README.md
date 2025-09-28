@@ -23,7 +23,7 @@ In addition to having a duration, c-effect instances can have arbitrary data att
 # Usage
 
 NBT storage locations will be referred to like so: `<storage location> -> <nbt path>`. \
-*Such that `/data modify storage <storage location> <nbt location>...` is valid.* 
+*Such that `/data modify storage <storage location> <nbt path>...` is valid.* 
 
 Likewise, custom effects created with Affect will be referred to as 'c-effects'.
 ## Conceptual
